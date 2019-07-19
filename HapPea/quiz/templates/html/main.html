@@ -1,0 +1,275 @@
+{% load static %}
+{% load widget_tweaks %}
+
+
+
+{% load socialaccount %}
+{% comment %} {% providers_media_js %} {% endcomment %}
+{% comment %} <h1>Django Login Mega-Tutorial</h1>
+{% if user.is_authenticated %}
+<p>Welcome {{ user.username }} !!!</p>
+<a href="{% url 'quizes' %}">take quiz</a>
+<p><a href="{% url 'account_logout' %}">Log out</a>
+{% else %}
+<p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+<p><a href="{% url 'account_login' %}">Log In </a></p>
+<p><a href="{% provider_login_url 'google' %}">Log In with Gmail</a></p>
+<p><a href="{% provider_login_url 'facebook' %}">Log In with facebook</a></p>
+<p><a href="{% provider_login_url 'twitter' %}">Log In with twitter</a></p>
+
+{% endif %}
+<p><a href="{% url 'quizes' %}">take quiz</a> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Yellowtail" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   
+     <link rel="stylesheet" href={% static 'css/main.css' %}>
+    <link rel="stylesheet" href={% static 'css/anime.css' %}>
+    
+
+    <title>Happea</title>
+</head>
+<body>
+   
+        {% include 'navbar.html' %}
+   
+    <!-- Main Section -->
+        <section class="main-sec">         
+            <div class="container main_height">        
+                <div class="row y-middle">
+                    <div class="col-sm-12 col-md-6 text-lg-left text-md-left txt-center" data-aos="fade-right" data-aos-duration="1500">
+        
+                        <h1 class="m-t">Happea</h1>
+                        <p class="m-b">
+							Onja Lyubomirsky, psychology professor at the University of California, defines happiness as, “the experience of joy, contentment, or positive well-being, combined with a sense that one’s life is good, meaningful, and worthwhile.” Is it as defined though? The happiness that we all feel doesn't seem so constrained. Any way we choose to define it though, we know it is dropping fast.  We all feel that we are losing grip on our sentiments and drowning in chaos. Happiness seems to be running away and there is no sign of emotional stability. Leaving work to play cricket with children is no longer a satisfying choice neither is achieving as much as your father at half his age.</p>
+                
+                        {% comment %} <div class="container text-lg-left text-md-left text-center b_c mb-3">
+                        
+                            <button  onclick="location.href={% url 'quizintro' %};" class="btn btn-default animated rollIn"><b>Let's Get Started</b> <i class="fa fa-arrow-right"></i></button>
+                       
+                        </div> {% endcomment %}
+                         <!-- modified -->
+                        <div class="container text-lg-left text-md-left text-center b_c mb-3">
+                            <button type="button" onclick="location.href={% url 'quizintro' %};" class="btn btn2 btn-default animated rollIn"><b>Let's Get Started</b> <i class="fa fa-arrow-right"></i></button>
+                        </div>
+<!-- end modified -->
+                    </div>
+        
+                    <div class="col-sm-12 col-md-6 " data-aos="fade-left" data-aos-duration="1500">
+        
+                        <img src={% static 'images/change/sec1.png' %} class="abc img-fluid">
+        
+                    </div>
+        
+                </div>
+        
+            </div>
+        
+        </section>
+
+    <!-- News Section -->
+    {% if newsflag %}
+        <section class="new-sec">
+            <div class="container">
+                <h1 class="mb-4 text-center img_heading animated bounceIn">News</h1>
+                <div class="card-deck" data-aos="fade-right" data-aos-duration="2000">
+                    {% for n in news %}
+                    <div class="card ben">
+                        <img class="card-img-top" src="{% static 'images/smiley.png' %}" alt="Card image cap">
+                        <div class="card-body">
+                           <a href="{{n.url}}"> <h5 class="card-title" >{{n.title}}</h5></a>
+                            <p class="card-text">{{n.description}}.</p>
+                            {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% comment %} <div class="card ben">
+                        <img class="card-img-top" src="{% static '/images/change/card1.jpg'%}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                    <div class="card ben">
+                        <img class="card-img-top" src="{% static '/images/change/card1.jpg'%}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                                content. This card has even longer content than the first to show that equal height action.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                </div> {% endcomment %}
+                </div>
+            </div>
+    </section>
+{% endif %}
+<!-- about section -->
+<section class="content-align-sm" style="height:auto">
+    <div class="container">
+        <h1 class="mb-4 text-center img_heading animated bounceIn">About</h1>
+        <div class="row y-middle" data-aos="fade-left" data-aos-duration="2000">
+            <div class="col-md-6 col-sm-6 m-b center-sm">
+
+                <img src= {% static 'images/change/sec2.png' %} class="abcd img-fluid" />
+
+            </div>
+            <div class="col-md-6 col-sm-6 m-b center-sm text-lg-left text-md-left text-center">
+                <h4>Dr. Jawahar Surisetti</h4>
+
+                <p class="m-b-md">
+
+                    Dr Jawahar Surisetti is a psychologist and educationist of international repute whose 1300 + speeches, seminars and workshops have been heard by lakhs of people around the globe. He is known worldwide as the Think Professor for his " Art of Thinking " and his " Think for India " movement for introduction of thinking in education. Basically, children like him. Also, their parents like him. A lot.
+
+                </p>
+            </div>
+        </div>
+        <div class="row y-middle" data-aos="fade-right" data-aos-duration="2000">
+            <div class="col-md-6 col-sm-6 m-b center-sm text-lg-left text-md-left text-center">
+                <h4>Jagrit S.</h4>
+
+                <p class="m-b-md">
+
+                    A young 22 year old graduate from BML Munjal University. His core areas are artificial intelligence and psychology. Doesn't like to talk much, evidently.
+
+                </p>
+
+            </div>
+            <div class="col-md-6 col-sm-6 m-b center-sm">
+
+                <img src={% static 'images/change/sec3.png' %} class="img-fluid" />
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Contact Us section -->
+<section class="bg-dark">
+    <div class="container">
+        <h1 class="mb-4 text-center img_heading animated bounceIn" style="color:white">Contact Us</h1>
+        <div class="row">
+            
+                        <div class="col-md-6  text-center">
+                            
+                            <div style="padding-top:15px;">
+                                <div class="col-md-12">
+                                    <div class="col-md-2 col-xs-4" style="margin-top: 44px;">
+                                        <!-- <i class="icon-map-marker"></i> -->
+                                    </div>
+                                    <div class="col-md-10 col-xs-8 text-left">
+                                        <h5> Address</h5>
+                                        <p>B 28 , Capital City Phase 3, Saddu Baronda Road, near Bhavans School , Raipur(CG) 492007 , India</p>
+                                    </div>
+                                </div>
+                        
+                                <div class="col-md-12">
+                                    <div class="col-md-2 col-xs-4" style="margin-top: 25px;">
+                                        <!-- <i class="icon-phone"></i> -->
+                                    </div>
+                                    <div class="col-md-10 col-xs-8 text-left">
+                                        <h5 >Call Us</h5>
+                                        <p>Mobile: +91 - 9303277947</p>
+                                    </div>
+                                </div>
+                        
+                                <div class="col-md-12">
+                                    <div class="col-md-2 col-xs-4" style="margin-top: 20px;">
+                                        <!-- <i class="icon-mail"></i> -->
+                                    </div>
+                                    <div class="col-md-10 col-xs-8 text-left">
+                                        <h5>Email</h5>
+                                        <p><a href="mailto:happeaadm@gmail.com" class="">happeaadm@gmail.com</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+     <div class="col-md-6 col-lg-6 mtop mb-3">                   
+    <p class="text-left mb-5">Do you have any questions? Please do not hesitate to contact us
+        directly. Our team will come back to you within
+        a matter of hours to help you.</p>
+    
+    <div class="row">
+    
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" class="form-control">
+                            <label for="name" class="">Your name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <label for="email" class="">Your email</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" class="form-control">
+                            <label for="subject" class="">Subject</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+    
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                            <label for="message">Your message</label>
+                        </div>
+    
+                    </div>
+                </div>
+            </form>
+            <div class="text-center text-md-left">
+                <a class="btn btn1 btn-default">Send</a>
+            </div>
+        </div>
+
+    
+    </div>
+    </div>
+
+                    </div>
+            </div>
+</section>
+        {% include 'footer.html' %}            
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+   
+</script>
+
+
+</body>
+</html>

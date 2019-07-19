@@ -1,0 +1,59 @@
+/* added */
+/* copyright css */
+footer{
+    color: white;
+    font-family: var(--scnd_font);
+    background:var(--black);
+    font-size: 0.8em;
+    padding: 1em;
+    /* margin-top:1em;  */
+    /* font-weight: bold; */
+    position: relative;
+    bottom:0;
+    height:50px;
+    width:100%;
+
+}
+@media only screen and (max-width: 556px) {
+  footer{
+    color: white;
+    font-family: var(--scnd_font);
+    background:var(--black);
+    font-size: 0.8em;
+    padding: 1em;
+    /* margin-top:1em;  */
+    /* font-weight: bold; */
+    position: relative;
+    bottom:0;
+    height:50px;
+    width:100%;
+
+}
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+/* social css */
+.social{
+    position: fixed;
+    top:45%;
+    right:0;
+    display: grid;
+    padding-right:1em;
+}
+.social a{
+    margin-bottom: 0.8em;
+}
+
+.social a .fa{
+    color:var(--black);
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 10px var(--black);
+    padding: 0.5em 0.6em;
+    margin-right:0.5em;  
+    font-size: 1em;
+}
+
+/* end added */

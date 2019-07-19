@@ -1,0 +1,136 @@
+{% comment %} <form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+ 
+   {{form.login}}
+  {{form.password}}
+   <button type="submit" class="ui big fluid button primary">Signup</button>
+        </form>
+
+{% include "html/login.html" %} {% endcomment %}
+
+{% load static %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+{% providers_media_js %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href= {% static 'fonts/font-awesome.min.css' %}>
+    <link rel="stylesheet" type="text/css" href= {% static 'fonts/material-design-iconic-font.min.css' %}>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href={% static 'css/login.css' %}>
+    <link rel="stylesheet" href= {% static 'css/util.css' %}>
+    <link rel="stylesheet" href={% static 'css/anime.css' %}>
+    <title>HapPea:Login</title>
+</head>
+<body>
+     {% include 'navbar.html' %}
+        <section class="main-sec">
+            <div class="container main_height">
+                <div class="row y-middle">
+                    <div class="col-sm-12 col-md-6 col-lg-6 text-center m-b-30" data-aos="fade-left" data-aos-duration="1500" >
+                        
+                        <h1 class="img_heading animated bounceIn ">Welcome!</h1>
+                        <img src= {% static 'images/change/login1.png' %} class=" abc img-fluid">
+                        
+                    
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" data-aos="fade-right"
+                        data-aos-duration="1500" >
+                        <div class="res_con">
+                            <div class="limiter">
+                                <div class="container-login100">
+                                    <div class="wrap-login100 p-l-30 p-r-30 p-t-30 p-b-20">
+                                        <form class="login100-form validate-form" method="POST" action="{% url 'account_login' %}">
+                                        {% csrf_token %}
+                                        
+                                            <span class="login100-form-title p-b-30">
+                                                Login
+                                            </span>
+                                            {{ form.non_field_errors }}
+                                            {% if form.error %}
+                                                {{form.username.error}}
+                                            {% endif %}
+                                            <br/>
+
+                                             {% if form.password.error %}
+                                                {{form.password.error}}
+                                            {% endif %}
+                                            <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                                                <span class="label-input100">Username</span>
+                                               {% comment %} {{form.username}} {% endcomment %}
+
+                                               {% render_field form.login  class="input100"  type="text" name="username" placeholder="Username" %}
+                                               
+                                               {% comment %} {% render_field form.search_query type="search" %} {% endcomment %}
+                                               {% comment %} <input class="input100" type="text" name="username" placeholder="Type your username"> {% endcomment %}
+                                                <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                            </div>
+                        
+                                            <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                                <span class="label-input100">Password</span>
+                                                 {% comment %} {{form.password}} {% endcomment %}
+                                                  {% render_field form.password class="input100" type="password" name="pass" placeholder="Password"%}
+                                                <span class="focus-input100" data-symbol="&#xf190;"></span>
+                                            </div>
+                        
+                                            <div class="text-right p-t-8 p-b-31">
+                                                <a href="#">
+                                                    Forgot password?
+                                                </a>
+                                            </div>
+                        
+                                            <div class="container-login100-form-btn">
+                                                <div class="wrap-login100-form-btn">
+                                                    <div class="login100-form-bgbtn"></div>
+                                                    <button class="login100-form-btn"  type="submit" >
+                                                        Login
+                                                    </button>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="txt1 text-center p-t-30 p-b-20">
+                                                <a href="{% url 'account_signup' %}" class="register">Register</a><br> <br>
+                                                <span>
+                                                    Or <a href="signin.html">Sign Up</a> Using
+                                                </span>
+                                            </div>
+                        {% comment %} <p><a href="{% provider_login_url 'google' %}">Log In with Gmail</a></p>
+<p><a href="{% provider_login_url 'facebook' %}">Log In with facebook</a></p>
+<p><a href="{% provider_login_url 'twitter' %}">Log In with twitter</a></p> {% endcomment %}
+                                            <div class="flex-c-m">
+                                                <a  href="{% provider_login_url 'facebook' %}" class="login100-social-item bg1">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                        
+                                                <a href="{% provider_login_url 'twitter' %}" class="login100-social-item bg2">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                        
+                                                <a  href="{% provider_login_url 'google' %}" class="login100-social-item bg3">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+        
+            </div>
+        
+        </section>
+</body>
+{% include 'footer.html' %}
+</html>

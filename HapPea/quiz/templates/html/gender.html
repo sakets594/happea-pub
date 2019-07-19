@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Yellowtail" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href={% static 'css/body.css' %}>
+    <link rel="stylesheet" href= {% static 'css/anime.css' %}>
+    
+    {% comment %}<link rel="stylesheet" href= {% static 'css/loader.css' %}> {% endcomment %}
+
+    <title>Happea</title>
+</head>
+<body>
+<!-- added -->
+    {% comment %} <div id="loader">
+        <div class="leftEye"></div>
+        <div class="rightEye"></div>
+        <div class="mouth"></div>
+    </div> {% endcomment %}
+<!-- end added -->
+    
+        {% include 'navbar.html' %}
+    <!-- Age Images -->
+    <form action="{% url 'profileinfocheck' %}" method="POST">
+                    {% csrf_token %}
+    <div class="container">
+        <h1 class="mb-4 text-center img_heading animated bounceIn">Male or Female ?</h1>
+                <div class="row animated fadeInLeft img_div">
+                <div class="col-lg-6 col-md-8 col-sm-8 col-xs-8">
+                    <div class="row img_center">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                            <a href="#" class="d-block mb-4 h-100 text-center">
+                                <label>
+                                <input type="radio" name="gender" value="1" >
+                                <img class="img-fluid img_enlarge" src={% static 'images/change/youth_male_xs.png' %} alt="">
+                                </label>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                            <a href="#" class="d-block mb-4 h-100 text-center">
+                                <label>
+                                <input type="radio" name="gender" value="2" >
+                                <img class="img-fluid img_enlarge" src={% static 'images/change/youth_female_xs.png' %} alt="">
+                                </label>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                    
+                </div>
+    </div>
+    <div class="container text-center b_c mb-3" >
+        <button type="submit" class="btn btn-default animated rollIn"><b>Next</b> <i class="fa fa-arrow-right"></i></button>
+    </div>
+    </form>
+
+    <!-- added -->
+   {% include 'footer.html' %}
+</body>
+</html>

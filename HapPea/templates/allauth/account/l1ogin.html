@@ -1,0 +1,56 @@
+
+<form class="login" method="POST" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{form}}
+  {% comment %} {{form}}
+   <button type="submit" class="ui big fluid button primary">Signup</button>
+  </form> {% endcomment %}
+  {% comment %} {{ form }} {% endcomment %}
+  <div class="field">
+            {% if form.username.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.name.errors.0}}" data-position="right center">
+            {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="user icon"></i>
+              {{form.username}}
+            </div>
+          </div>
+          {% comment %} <div class="field">
+            {% if form.email.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.email.errors.0}}" data-position="right center">
+                      {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="user icon"></i>
+              {{form.email}}
+            </div>
+          </div> {% endcomment %}
+          <div class="field">
+            {% if form.password1.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.password1.errors.0}}" data-position="right center">
+            {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="asterisk icon"></i>
+             {{form.password1}}
+            </div>
+          </div>
+          {% comment %} <div class="field">
+            {% if form.password2.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.password2.errors.0}}" data-position="right center">
+            {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="asterisk icon"></i>
+              {{form.password2}}
+            </div>
+          </div> {% endcomment %}
+          <div class="field">
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+          </div>
+          
+          <button type="submit" class="ui big fluid button primary">Signup</button>
+        </form>

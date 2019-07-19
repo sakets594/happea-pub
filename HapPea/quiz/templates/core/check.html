@@ -1,0 +1,30 @@
+checkde
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<a href={% url 'quizes' %}>create questionaire</a>
+
+{{count}}
+</br>
+
+{{plot}}
+</br>
+{{question.question}}
+</br>
+{% comment %} {{length(choices)}} {% endcomment %}
+<form action="{% url 'quizes' %}" method="POST">
+{% csrf_token %}
+{% for i in choices%}
+ <input type="radio" name="choice" value="{{i.pk}}"> {{i.choice}}<br>
+
+{% endfor %}
+</form> 
+{% comment %} <form>
+  <input type="radio" name="gender" value="male" checked> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other  
+</form>  {% endcomment %}
+<script>
+$('input[type=radio]').on('change', function() {
+    $(this).closest("form").submit();
+});
+</script>

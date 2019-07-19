@@ -1,0 +1,27 @@
+
+
+
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+{% if user.is_authenticated %}
+<p>Welcome {{ user.username }} !!!</p>
+
+
+<p><a href="{% url 'account_logout' %}">Log out</a>
+{% endif %}
+<form action="{% url 'home' %}" method="post">
+ {% csrf_token %}
+  <input type="radio" name="agegroup" value="1"> 10-18<br>
+  <input type="radio" name="agegroup" value="2"> 19-25<br>
+  <input type="radio" name="agegroup" value="3"> 26-40<br>
+  First name:<br>
+  <input type="text" name="firstname" value="Mickey">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname" value="Mouse">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+<a href={% url 'quizes' %}>take quiz</a>

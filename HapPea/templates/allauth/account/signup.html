@@ -1,0 +1,158 @@
+{% comment %} 
+newcreatedsdadsaf
+signup page
+
+
+<form class="login" method="POST" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  
+  <div class="field">
+            {% if form.username.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.name.errors.0}}" data-position="right center">
+            {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="user icon"></i>
+              {{form.username}}
+            </div>
+          </div>
+          <div class="field">
+            {% if form.email.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.email.errors.0}}" data-position="right center">
+                      {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="user icon"></i>
+              {{form.email}}
+            </div>
+          </div>
+          <div class="field">
+            {% if form.password1.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.password1.errors.0}}" data-position="right center">
+            {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="asterisk icon"></i>
+             {{form.password1}}
+            </div>
+          </div>
+          <div class="field">
+            {% if form.password2.errors %}
+              <div class="ui big left icon input error" data-tooltip="{{form.password2.errors.0}}" data-position="right center">
+            {% else %}
+              <div class="ui big left icon input">
+            {% endif %}
+              <i aria-hidden="true" class="asterisk icon"></i>
+              {{form.password2}}
+            </div>
+          </div>
+          <div class="field">
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+          </div>
+          
+          <button type="submit" class="ui big fluid button primary">Signup</button>
+        </form> {% endcomment %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% comment %} <link rel="stylesheet" type="text/css" href="../fonts/material-design-iconic-font.min.css"> {% endcomment %}
+     <link rel="stylesheet" type="text/css" href= {% static 'fonts/material-design-iconic-font.min.css' %}>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href={% static 'css/login.css' %}>
+    <link rel="stylesheet" href= {% static 'css/util.css' %}>
+    <link rel="stylesheet" href={% static 'css/anime.css' %}>
+    <title>HapPea:SignUp</title>
+</head>
+
+<body>
+{% include 'navbar.html' %}
+
+<section class="main-sec">
+    <div class="container main_height">
+        <div class="row y-middle">
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center m-b-40" data-aos="fade-left" data-aos-duration="1500">
+
+                <h1 class="img_heading animated bounceIn ">Welcome!</h1>
+                <img src= {% static 'images/change/login1.png' %} class=" abc img-fluid">
+
+
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6" data-aos="fade-right" data-aos-duration="1500">
+        <div class="res_con">
+            <div class="limiter">
+                <div class="container-login100">
+                    <div class="wrap-login100 p-l-30 p-r-30 p-t-30 p-b-20">
+                        <form class="login100-form validate-form" method="POST" action="{% url 'account_signup' %}">
+                             {% csrf_token %}
+                             {{form.errors}}
+                            <span class="login100-form-title p-b-17">
+                                Register
+                            </span>
+                            {% if form.username.errors %}
+                                  <div class="ui big left icon input error" data-tooltip="{{form.name.errors.0}}" data-position="right center">
+                                {% else %}
+                                  <div class="ui big left icon input">
+                                {% endif %}
+                            <div class="wrap-input100 validate-input m-b-10" data-validate="Username is reauired">
+                                <span class="label-input100">Username</span>
+                                {% comment %} <input class="input100" type="text" name="username" placeholder="Type your username"> {% endcomment %}
+                                {% render_field form.username  class="input100"  type="text" name="username" placeholder="Username" %}
+                                <span class="focus-input100" data-symbol="&#xf206;"></span>
+                            </div>
+        
+                            <div class="wrap-input100 validate-input m-b-10" data-validate="Email is required">
+                                <span class="label-input100">Email</span>
+                                {% comment %} <input class="input100" type="email" name="email" placeholder="Type your Email"> {% endcomment %}
+                                 {% render_field form.email  class="input100"  type="text" name="username" placeholder="Email" %}
+                                <span class="focus-input100" data-symbol="&#xf15a;"></span>
+                            </div>
+                            <div class="wrap-input100 validate-input m-b-10" data-validate="Password is required">
+                                <span class="label-input100">Password</span>
+                                {% comment %} <input class="input100" type="password" name="pass" placeholder="Type your Password"> {% endcomment %}
+                                 {% render_field form.password1  class="input100"  type="password" name="username" placeholder="Password" %}
+                                <span class="focus-input100" data-symbol="&#xf190;"></span>
+                            </div>
+                            <div class="wrap-input100 validate-input m-b-50" data-validate="Confirm Password is required">
+                                <span class="label-input100">Confirm Password</span>
+                                {% comment %} <input class="input100" type="password" name="conf_pass" placeholder="Type again your Password"> {% endcomment %}
+                                 {% render_field form.password2  class="input100"  type="password" name="username" placeholder="Confirm Password" %}
+                                <span class="focus-input100" data-symbol="&#xf190;"></span>
+                            </div>
+                            <div class="container-login100-form-btn m-b-40">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+                                    <button class="login100-form-btn">
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

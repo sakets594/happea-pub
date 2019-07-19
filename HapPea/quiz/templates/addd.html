@@ -1,0 +1,113 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Yellowtail" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+    <title>Happea</title>
+</head>
+
+{% include 'navbar.html' %}
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<html>
+
+  <body>
+    
+<form method="post" action={% url 'addQuiz' %}>
+ {% csrf_token %}
+<table id="id_forms_table" border="0" cellpadding="0" cellspacing="5">
+{{ quiz_form.errors }}
+ {{ quiz_form }}
+        <thead>
+    	    <tr>
+    	        <th scope="col">&nbsp;</th>
+    	        <th scope="col">Add plot</th>
+    	        <th scope="col">&nbsp;</th>
+    	        <th scope="col">&nbsp;</th>
+    	    </tr>
+        </thead>
+ 
+        <tbody>
+            {% for form in quiz_choice_form %}
+            {{form.errors}}
+    	    <tr id="{{ form.prefix }}-row" class="dynamic-form">
+    	        <td{% if forloop.first %} class="hidden"{% endif %}>{{ form.operand }}</td>
+                {{form.id}}
+    	        {% comment %} <td>position:{{ form.position }}</td> {% endcomment %}
+                <td>choice:{{ form.choice }}</td>
+    	        <td>score {{ form.assessment }}</td>
+    	        <td{% if forloop.first %} class="hidden"{% endif %}>
+    	            <a id="remove-{{ form.prefix }}-row" href="javascript:void(0)" class="delete-row"></a>
+    	        </td>
+            </tr>
+    	    {% endfor %}
+            {% comment %} <tr>
+    	        <td colspan="4"><a href="javascript:void(0)" class="add-row">add property</a></td>
+    	    </tr> {% endcomment %}
+        </tbody>
+    </table>
+   {{ quiz_choice_form.management_form }}
+
+<button type='submit'>Submit</button>
+</form>
+  </body>
+</html>
+
+
+ <script type="text/javascript">
+    <!--
+    $(function () {
+        $('.add-row').click(function() {
+    	    return addForm(this, 'quiz_choice_form');
+        });
+        $('.delete-row').click(function() {
+    	    return deleteForm(this, 'form');
+        })
+    })
+    //-->
+ </script>
+<script type='text/javascript'>
+function updateElementIndex(el, prefix, ndx) {
+		var id_regex = new RegExp('(' + prefix + '-\\d+)');
+		var replacement = prefix + '-' + ndx;
+		if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+		if (el.id) el.id = el.id.replace(id_regex, replacement);
+		if (el.name) el.name = el.name.replace(id_regex, replacement);
+	}
+
+    function addForm(btn, prefix) {
+        var formCount = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+        var row = $('.dynamic-form:first').clone(true).get(0);
+        $(row).removeAttr('id').insertAfter($('.dynamic-form:last')).children('.hidden').removeClass('hidden');
+        $(row).children().not(':last').children().each(function() {
+    	    updateElementIndex(this, prefix, formCount);
+    	    $(this).val('');
+        });
+        $(row).find('.delete-row').click(function() {
+    	    deleteForm(this, prefix);
+        });
+        $('#id_' + prefix + '-TOTAL_FORMS').val(formCount + 1);
+        return false;
+    }
+
+    function deleteForm(btn, prefix) {
+        $(btn).parents('.dynamic-form').remove();
+        var forms = $('.dynamic-form');
+        $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+        for (var i=0, formCount=forms.length; i<formCount; i++) {
+    	    $(forms.get(i)).children().not(':last').children().each(function() {
+    	        updateElementIndex(this, prefix, i);
+    	    });
+        }
+        return false;
+    }
+</script>

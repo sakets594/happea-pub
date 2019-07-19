@@ -1,0 +1,32 @@
+ <!-- added -->
+    <!-- Copyright -->
+    {% load static %}
+      <link rel="stylesheet" href={% static 'css/footer.css' %}>
+    <footer>
+    <div class=" footer text-center">© 2019 Copyright :
+        <a href="https://mdbootstrap.com/education/bootstrap/"> Happea.com</a>
+        . All Rights Reserved.
+    </div>
+    </footer>
+    <!-- social icons -->
+    <div class="social">
+        <a href="#"><i class="fa fa-facebook round"></i></a>
+        <a href="#"><i class="fa fa-instagram round"></i></a>
+        <a href="#"><i class="fa fa-twitter round"></i></a>
+        <a href="#"><i class="fa fa-linkedin round"></i></a>
+    </div>
+    <script>
+        $(function () {
+                $('.round').hover(function () {
+                    $(this).css('transform', 'scale(1.05)');
+                }, function () {
+                    $(this).css('transform', 'scale(1)');
+                });
+            });
+    </script>
+    <script type="text/javascript">
+        $(window).bind("load", function () {
+            $('#loader').fadeOut(2000);
+        });
+    </script>
+<!-- end added -->

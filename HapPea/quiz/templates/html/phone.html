@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Yellowtail" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href= {% static 'css/phone.css' %}>
+    <link rel="stylesheet" href= {% static 'css/util.css' %}>
+    <link rel="stylesheet" href={% static 'css/anime.css' %}>
+    <link rel="stylesheet" href={% static 'css/footer.css' %}>
+    <style>
+        footer {
+            position: absolute;
+        }
+                @media only screen and (max-width: 556px) {
+        footer{
+            color: white;
+            font-family: var(--scnd_font);
+            background:var(--black);
+            font-size: 0.8em;
+            padding: 1em;
+            /* margin-top:1em;  */
+            /* font-weight: bold; */
+            position: absolute;
+            bottom:0;
+            height:50px;
+            width:100%;
+        }
+    }
+    </style>
+    <title>Happea</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    {% comment %} <nav class="navbar navbar-expand-md py-0 navbar-light bg-light sticky-top py-md-0">
+        <div class="container text-center">
+            <a class="navbar-brand" href="#">Happea</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b>News</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b>About Us</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b>Contact Us</b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> {% endcomment %}
+    {% include 'navbar.html' %}
+    <!-- Phone no -->
+    <section class="main-sec">
+        <div class="container main_height ">
+                <div class="phone" data-aos="fade-right" data-aos-duration="1500">
+                    <div class="res_con">
+                        <div class="limiter">
+                            <div class="container-login100 resp">
+                                <div class="wrap-login100 p-l-30 p-r-30 p-t-30 p-b-20">
+                                    <form class="login100-form validate-form" action="{% url 'profileinfocheck' %}" method="POST">
+                                    {% csrf_token %}
+                                        <span class="login100-form-title p-b-30">
+                                            Contact
+                                        </span>
+                                        <div class="wrap-input100 validate-input m-b-40" data-validate="Number is required">
+                                            <span class="label-input100">Contact</span>
+                                            <input class="input100" type="text" name="phonenumber" placeholder="Type your Contact No">
+                                            <span class="focus-input100" data-symbol="&#xf2be;"></span>
+                                        </div>
+                                        <div class="container-login100-form-btn">
+                                            <div class="wrap-login100-form-btn">
+                                                <div class="login100-form-bgbtn"></div>
+                                                <button class="login100-form-btn" type="submit">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                         <!-- added -->
+                                        <div class="disclaimer">
+                                        <span ><a href="#">*Disclaimer : </a>No Misuse of Mobile Number</span>
+                                        </div>
+<!-- end added -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+     <!-- footer -->
+            <!-- Copyright -->
+            <footer>
+                <div class=" footer text-center">© 2019 Copyright :
+                    <a href="" style="font-family:var(--scnd-font)"> Happea.com</a>
+                    . All Rights Reserved.
+                </div>
+</footer>
+</body>
+
+</html>
